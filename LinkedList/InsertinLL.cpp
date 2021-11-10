@@ -1,69 +1,85 @@
 #include <iostream> //Inserting Node in existing Linked List at a given position
 using namespace std;
-
+typedef struct Node *nodeptr;
 struct Node
 {
     int data;
     struct Node *next;
-} *first = NULL;
+};
 
-void create(int A[], int n)
+void create(int A[], int n, nodeptr *head)
 {
-    struct Node *t, *last;
-    first = (struct Node *)malloc(sizeof(struct Node));
-    first->data = A[0];
-    first->next = NULL;
-    last = first;
+    // struct Node *t, *last;
+    nodeptr newnode = (struct Node *)malloc(sizeof(struct Node));
+    newnode->data = A[0];
+    newnode->next = nullptr;
+    *head = newnode;
+    nodeptr temp = *head;
+    // last = first;
     for (int i = 1; i < n; i++)
     {
-        t = (struct Node *)malloc(sizeof(struct Node));
-        t->data = A[i];
-        t->next = NULL;
-        last->next = t;
-        last = t;
+        nodeptr newnode = (struct Node *)malloc(sizeof(struct Node));
+        newnode->data = A[i];
+        newnode->next = nullptr;
+        temp->next = newnode;
+        temp = temp->next;
+        // last->next = t;
+        // last = t;
     }
 }
 
-void Display(struct Node *p)
+void Display(nodeptr head)
 {
-    while (p != 0)
+    nodeptr temp = head;
+    while (temp->next)
     {
-        cout << p->data << endl;
-        p = p->next;
+        cout << temp->data << endl;
+        temp = temp->next;
     };
 };
 
-void Insert(int pos, int value)
+void Insert(int pos, int value, nodeptr *head)
 {
-    Node *t, *p;
-    t = (struct Node *)malloc(sizeof(struct Node));
-    t->data = value;
-    
-
+    // Node *t, *p;
+    nodeptr newnode = (struct Node *)malloc(sizeof(struct Node));
+    newnode->data = value;
+    int i = 1;
+    nodeptr temp = *head;
     if (pos == 0)
     {
-        
-        t->next = first;
-        first = t;
+        *head = newnode;
+        newnode->next = temp->next;
+        // t->next = first;
+        // first = t;
     }
     else if (pos > 0)
     {
-        p = first;
-        for (int i = 0; i < pos - 1 && p; i++)
+        // p = first;
+        // for (int i = 0; i < pos  && p; i++)
+        while (i <= pos - 1 && temp->next)
         {
-            p = p->next;
-            if (p)
+            if (temp)
             {
-
-                t->next = p->next;
-                p->next = t;
-            };
+                temp = temp->next;
+            }
+            else
+            {
+                cout << "out of bounds \n";
+                exit(0);
+            }
+            i++;
         };
+        if (temp != nullptr)
+        {
+            newnode->next = temp->next;
+            temp->next = newnode;
+        }
     };
 };
 
 int main()
 {
+    nodeptr head = nullptr;
     int A[50], n;
     cout << "Enter size of linked list" << endl;
     cin >> n;
@@ -72,17 +88,17 @@ int main()
     {
         cin >> A[i];
     }
-    create(A, n);
+    create(A, n, &head);
     cout << "Here is ur Linked list" << endl;
-    Display(first);
+    Display(head);
     cout << "Enter the position where u want to insert!!" << endl;
     int pos, value;
     cin >> pos;
     cout << "Enter the value" << endl;
     cin >> value;
-    Insert(pos, value);
+    Insert(pos, value, &head);
     cout << "Final Linked list" << endl;
-    Display(first);
+    Display(head);
 
     return 0;
 }
