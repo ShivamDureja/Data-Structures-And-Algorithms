@@ -1,77 +1,64 @@
 #include <iostream>
+#include "Queue.h"
 using namespace std;
 
-struct Node
-{
-    int data;
-    struct Node *next;
-} *front = NULL, *rear = NULL;
+struct Node *root = NULL;
 
-void enqueue(int x)
+void treecreate()
 {
-    struct Node *t;
-    t = (struct Node *)malloc(sizeof(struct Node));
-    if (t == NULL)
+    struct Node *p, *t;
+    int x;
+    struct Queue q;
+    create(&q, 100);
+
+    cout << "Enter the value of root";
+    cin >> x;
+    root = (struct Node *)malloc(sizeof(struct Node));
+    root->data = x;
+    root->lchild = root->rchild = NULL;
+    enqueue(&q, root);
+
+    while (!isEmpty(q))
     {
-        cout << "Queue is full";
-    }
-    else
-    {
-        t->data = x;
-        t->next = NULL;
-        if (front == NULL)
+        p = dequeue(&q);
+        cout << "Enter left child of "<<p->data << endl;
+        cin >> x;
+        if (x != -1)
         {
-            front = rear = t;
+            t = (struct Node *)malloc(sizeof(struct Node));
+            t->data = x;
+            t->lchild = t->rchild = NULL;
+            p->lchild = t;
+            enqueue(&q, t);
         }
-        else
+        cout << "Enter right child of "<<p->data << endl;
+        cin >> x;
+        if (x != -1)
         {
-            rear->next = t;
-            rear = t;
+            t = (struct Node *)malloc(sizeof(struct Node));
+            t->data = x;
+            t->lchild = t->rchild = NULL;
+            p->rchild = t;
+            enqueue(&q, t);
         }
     }
 }
 
-int dequeue()
+void preorder(struct Node *p)
 {
-    int x = -1;
-    struct Node *t;
-    if (front == NULL)
+    if (p)
     {
-        cout << "Queue is empty";
+        cout << p->data << endl;
+        preorder(p->lchild);
+        preorder(p->rchild);
     }
-    else
-    {
-        x = front->data;
-        t = front;
-        front = front->next;
-        free(t);
-    }
-    return x;
-}
-
-void Display()
-{
-    struct Node *p = front;
-    while (p)
-    {
-        printf("%d ", p->data);
-        p = p->next;
-    }
-    printf("\n");
 }
 
 int main()
 {
-
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
-    enqueue(40);
-    enqueue(50);
-
-    Display();
-    cout<<dequeue();
-    Display();
+    treecreate();
+    cout<<"Tree is "<<endl;
+    preorder(root);
 
     return 0;
 }
