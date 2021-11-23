@@ -1,4 +1,4 @@
-#include <iostream> //BINARY SEARCH TREES
+#include <iostream>             //BINARY SEARCH TREES
 using namespace std;
 
 struct Node
@@ -8,7 +8,7 @@ struct Node
     struct Node *rchild;
 } *root = NULL;
 
-void Insert(int key) //Inserting and creating BST
+void Insert(int key)            //Inserting and creating BST
 {
     struct Node *t = root;
     struct Node *r, *p;
@@ -49,7 +49,7 @@ void Insert(int key) //Inserting and creating BST
     }
 }
 
-void InOrder(struct Node *p) //Traversing tree to produce sorted elements
+void InOrder(struct Node *p)   //Traversing tree to produce sorted elements
 {
     if (p)
     {
@@ -60,7 +60,7 @@ void InOrder(struct Node *p) //Traversing tree to produce sorted elements
 }
 
 struct Node *Search(int key)
-{ //Searching in BST
+{                               //Searching in BST
 
     struct Node *p = root;
 
