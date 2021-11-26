@@ -62,8 +62,8 @@ void InOrder(struct Node *p) //Traversing tree to produce sorted elements
 struct Node *RInsert(struct Node *p, int key)
 { //Recursive Insertion
 
-    struct Node *t = p;
-    if (t == NULL)
+    struct Node *t = NULL;
+    if (p == NULL)
     {
         t = (struct Node *)malloc(sizeof(struct Node));
         t->data = key;
