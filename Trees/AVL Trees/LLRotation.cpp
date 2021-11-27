@@ -85,12 +85,13 @@ struct Node *RInsert(struct Node *p, int key)
         return RLRotation(p);
     }else if(BalanceFactor(p) == -2 && BalanceFactor(p->rchild) == -1){
         return RRRotation(p);
-
+    }
     return p;
+
 }
 
-void InOrder(struct Node *p) //Traversing tree to produce sorted elements
-{
+void InOrder(struct Node *p){    //Traversing tree to produce sorted elements
+
     if (p)
     {
         InOrder(p->lchild);
