@@ -1,7 +1,7 @@
 #include <iostream>   //INSERTION SORT
 using namespace std;
 
-void display(int arr[], int n)
+void display(int arr[], int n)   //function to display elements of array
 {
     for (int i = 0; i < n; i++)
     {
@@ -9,13 +9,13 @@ void display(int arr[], int n)
     }
 }
 
-void InsertionSort(int arr[], int n)
+void InsertionSort(int arr[], int n)   
 {
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++)      //loop that iterates over array
     {
         int current = arr[i];
         int j = i - 1;
-        while (arr[j] > current && j >= 0)
+        while (arr[j] > current && j >= 0)   
         {
             arr[j + 1] = arr[j];
             j--;
@@ -26,18 +26,10 @@ void InsertionSort(int arr[], int n)
 
 int main()
 {
-    int n;
-    cout << "Enter size of array";
-    cin >> n;
-    int arr[50];
-    cout << "Enter elements of array";
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
+    int arr[50] = {8,1,4,1,5,9,2,6,5};
     cout << "Sorted array is => " << endl;
-    InsertionSort(arr,n);
-    display(arr,n);
+    InsertionSort(arr,9);
+    display(arr,9);
     return 0;
     
 }
