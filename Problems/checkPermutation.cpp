@@ -17,10 +17,21 @@ bool chkPermutation(string str1, string str2)
     return true;
 }
 
+//Check palindrome of string
+// bool chkPalindrome(string str){
+//     for(int i=0;i<str.length();i++){
+//         if(str[i] != str[str.length()-i-1]){
+//             return false;
+//         }
+//     }
+//     return true;
+
+// }
+
 int main()
 {
-    string s1 = "shvadgbfkim";
-    string s2 = "shivam";
+    string s1 = "tat";
+    string s2 = "tata";
     if (chkPermutation(s1, s2))
     {
         cout << "strings are permutation of one another";
