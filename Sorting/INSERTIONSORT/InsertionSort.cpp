@@ -1,5 +1,7 @@
+//Insertion sort is useful when number of elements is small
+
 #include <iostream>   //INSERTION SORT
-using namespace std;
+using namespace std;  //Time complexity O(n^2)
 
 void display(int arr[], int n)   //function to display elements of array
 {
