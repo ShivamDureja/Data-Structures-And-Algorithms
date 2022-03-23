@@ -1,3 +1,6 @@
+//selection sort aims to find the minimum element in the subarray and 
+//place it at the beginning
+//Time Complexity is always O(n^2)
 #include <iostream>
 using namespace std;
 

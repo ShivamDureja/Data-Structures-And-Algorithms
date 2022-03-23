@@ -1,3 +1,7 @@
+/* it is based on divide and conquer.It calls itself for two halves then merge to 
+form final sorted array. Time Complexity O(nlogn) in all cases. */
+
+
 #include <iostream>
 
 using namespace std;
