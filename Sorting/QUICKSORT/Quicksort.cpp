@@ -1,3 +1,5 @@
+//Time Complexity Best Case- O(n^2)
+//Worst and Avg case- O(N logN)
 #include <iostream>
 using namespace std;
 
