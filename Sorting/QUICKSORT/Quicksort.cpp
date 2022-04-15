@@ -44,7 +44,7 @@ void QuickSort(int A[], int l, int h)
         j = partition(A, l, h);
         QuickSort(A, l, j);
         QuickSort(A, j + 1, h);
-    }
+    }                       
 }
 
 void Display(int arr[], int n)
