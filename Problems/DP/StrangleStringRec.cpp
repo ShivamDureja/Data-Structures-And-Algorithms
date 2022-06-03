@@ -25,7 +25,7 @@ bool solve(string a, string b)
     bool flag = false;
     for (int i = 1; i <= n - 1; i++)
     {
-        if (((solve(a.substr(0, i), b.substr(n - i, i)) == true) && (solve(a.substr(i, n - i), b.substr(0, i)) == true)) || ((solve(a.substr(0, i), b.substr(0, i)) == true) && (solve(a.substr(i, n - i), b.substr(i, n - i)) == true)))
+        if (((solve(a.substr(0, i), b.substr(n - i, i)) == true) && (solve(a.substr(i, n - i), b.substr(0, n - i)) == true)) || ((solve(a.substr(0, i), b.substr(0, i)) == true) && (solve(a.substr(i, n - i), b.substr(i, n - i)) == true)))
         {
             flag = true;
             break;
