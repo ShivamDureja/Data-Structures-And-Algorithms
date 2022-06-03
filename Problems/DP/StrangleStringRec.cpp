@@ -9,19 +9,24 @@ Given two strings s1 and s2 of the same length, return true if s2 is a scrambled
 #include <iostream>
 using namespace std;
 
-bool solve(string a,string b){
-    //base conditions
+bool solve(string a, string b)
+{
+    // base conditions
     int n = a.length();
-    if(a.compare(b) == 0){    //std::compare function to check if strings are equal
+    if (a.compare(b) == 0)
+    { // std::compare function to check if strings are equal
         return true;
     }
-    if(a.length() <= 1){
+    if (a.length() <= 1)
+    {
         return false;
     }
 
     bool flag = false;
-    for(int i=1;i<=n-1;i++){
-        if(((solve(a.substr(0,i),b.substr(n-i,i)) == true) && (solve(a.substr(i,n-i),b.substr(0,i)) == true)) || ((solve(a.substr(0,i),b.substr(0,i)) == true) && (solve(a.substr(i,n-i),b.substr(i,n-i)) == true))){
+    for (int i = 1; i <= n - 1; i++)
+    {
+        if (((solve(a.substr(0, i), b.substr(n - i, i)) == true) && (solve(a.substr(i, n - i), b.substr(0, i)) == true)) || ((solve(a.substr(0, i), b.substr(0, i)) == true) && (solve(a.substr(i, n - i), b.substr(i, n - i)) == true)))
+        {
             flag = true;
             break;
         }
@@ -29,19 +34,22 @@ bool solve(string a,string b){
     return flag;
 }
 
-
-
-int main(){
+int main()
+{
     string a = "great";
     string b = "ategr";
-    if(a.length() != b.length()){
+    if (a.length() != b.length())
+    {
         return false;
     }
-    bool ans = solve(a,b);
-    if(ans){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
+    bool ans = solve(a, b);
+    if (ans)
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
     }
     return 0;
 }
